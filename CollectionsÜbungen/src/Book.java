@@ -2,7 +2,7 @@ import java.lang.Comparable;
 public class Book implements Comparable<Book> {
 	private String author, title, issue;
 	public String getAuthor() {
-		return author;
+		return author; // Der schreiberling
 	}
 	public void setAuthor(String author) {
 		this.author = author;
