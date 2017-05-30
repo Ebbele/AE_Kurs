@@ -5,14 +5,15 @@ import java.sql.SQLException;
 public class DBM_Test {
 	public static void main(String[] args) {
 
-		DBM_2 dbm=new DBM_2();
+		DBM_3 dbm=new DBM_3();
 		dbm.loadDriver();
 		dbm.connectDB();
 		dbm.dbQuery();
-	//	
+		
 	//	dbm.insertElement();
 		
-		dbm.deleteElement();
+		//dbm.deleteElement();
+		dbm.updateDatabase();
 		dbm.dbQuery();
 		dbm.showQuery();
 		

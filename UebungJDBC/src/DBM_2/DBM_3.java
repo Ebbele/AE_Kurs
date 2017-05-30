@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DBM_2 {
+public class DBM_3 {
 	Connection con = null;
 	Statement stmt;
 	ResultSet rs;
@@ -105,5 +105,10 @@ public class DBM_2 {
 		catch(SQLException e) {
 			
 		}
+	}
+
+	void menue(){
+		System.out.println("Alles Zeigen/Insert/Delete/Update");
+		
 	}
 }
