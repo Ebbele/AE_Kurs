@@ -8,7 +8,7 @@ public class DBM_Menu {
 			"1 - Datenbank ausgeben",
 			"2 - Datensatz eintragen",
 			"3 - Datensatz entfernen",
-			"4 - Datenbank aktualisieren",
+			"4 - Datensatz aendern", 
 			"5 - Datensatz suchen",
 			"6 - Programm beenden..."
 	};
@@ -87,7 +87,7 @@ public class DBM_Menu {
 		case 2: // Eintrag einfuegen
 			System.out.println("Daten fuer neuen Eintrag eingeben:");
 
-			if (DBM_2.insertElement(connection, getValues(in)) == 1) {
+			if (DBM_4.insertElement(connection, getValues(in)) == 1) {
 				System.out.println("Eintrag erfolgreich");
 			} ;
 			break;
@@ -98,7 +98,7 @@ public class DBM_Menu {
 			try {
 				id = in.nextInt();
 				in.nextLine();
-				if (DBM_2.deleteElement(connection, id) == 1) {
+				if (DBM_4.deleteElement(connection, id) == 1) {
 					System.out.println("Loeschen erfolgreich...");
 				}
 			} catch (InputMismatchException e) {
@@ -116,7 +116,7 @@ public class DBM_Menu {
 				try {
 					DBM_1.showQuery(DBM_1.dbQuery(connection, "SELECT * FROM customer WHERE id = " + idUpdate));
 					System.out.println("Neue Daten:");
-					if (DBM_2.updateDatabase(connection, idUpdate, getValues(in)) == 1) {
+					if (DBM_4.updateDatabase(connection, idUpdate, getValues(in)) == 1) {
 						System.out.println("Aenderung erfolgreich...");
 					}
 				} catch (SQLException except) {

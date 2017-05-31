@@ -1,14 +1,14 @@
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class DBM_Test_2 {
+public class DBM_Test_4 {
 
 	public static void main(String[] args) {
 		DBM_Menu menu = new DBM_Menu();
 		
 		int toDo = -1;
 		
-		Connection connection = DBM_4.connectDB("uebung_1/database", "SA", null);
+		Connection connection = DBM_1.connectDB("uebung_1/database", "SA", null);
 		while(( toDo = menu.getCommand() ) != 6 ){
 			menu.runCmd(toDo, connection);
 		}
