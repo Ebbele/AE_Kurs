@@ -13,7 +13,9 @@ public class DBM_Test {
 	//	dbm.insertElement();
 		
 		//dbm.deleteElement();
-		dbm.updateDatabase();
+		//dbm.updateDatabase();
+	
+		dbm.insertElement(dbm.eingabeDaten());
 		dbm.dbQuery();
 		dbm.showQuery();
 		

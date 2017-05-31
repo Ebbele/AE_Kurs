@@ -1,7 +1,9 @@
 package DBM_2;
 
 import java.sql.Connection;
+import java.util.*;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,7 +12,9 @@ public class DBM_3 {
 	Connection con = null;
 	Statement stmt;
 	ResultSet rs;
-
+	Scanner sc= new Scanner(System.in);
+	
+	
 	public Connection getCon() {
 		return con;
 	}
@@ -84,12 +88,42 @@ public class DBM_3 {
 		}
 	}
 
-	void insertElement(){
+	String[] eingabeDaten(){
+		String[] insert=new String[5];
+		
+		System.out.println("ID: ");
+		insert[0]=sc.nextLine();
+		System.out.println("Vorname: ");
+		insert[1]=sc.nextLine();
+		System.out.println("Nachname: ");
+		insert[2]=sc.nextLine();
+		System.out.println("Straße: ");
+		insert[3]=sc.nextLine();
+		System.out.println("Ort: ");
+		insert[4]=sc.nextLine();
+		
+		return insert;
+		
+	}
+	
+	
+	void insertElement(String[] insert){
 		try {
-			stmt.executeUpdate("INSERT INTO Customer " + "VALUES ('52','Boogie','Man','Weg Weger','Wegberg')");
+			String sql="INSERT INTO Customer " + "VALUES ('?','?','?','?','?')";
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setString(1, insert[0]);
+			ps.setString(2, insert[1]);
+			ps.setString(3, insert[2]);
+			ps.setString(4, insert[3]);
+			ps.setString(5, insert[4]);
+			//stmt.executeUpdate("INSERT INTO Customer " + "VALUES ('52','Boogie','Man','Weg Weger','Wegberg')");
+			ps.executeUpdate();
+			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		sc.close();
 	}
 	
 	void deleteElement()
