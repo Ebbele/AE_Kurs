@@ -86,68 +86,113 @@ public class DBM_3 {
 			e.printStackTrace();
 		}
 	}
-
-	String [] insertElement(){
+	
+	String[] dateEingeben(){
 		
 		String []insert=new String[5];
 		
+		System.out.println("ID: ");
+		insert[0]=sc.nextLine();
+		
+		System.out.println("Vorname: ");
+		insert[1]=sc.nextLine();
+		
+		System.out.println("Nachname: ");
+		insert[2]=sc.nextLine();
+		
+		System.out.println("Straﬂe + NR: ");
+		insert[3]=sc.nextLine();
+		
+		System.out.println("Stadt: ");
+		insert[4]=sc.nextLine();
+		
+		return insert;
+	}
+	
+	void insertElement(String[] insert){		
 		try {
-			System.out.println("ID: ");
-			insert[0]=sc.nextLine();
-			
-			System.out.println("Vorname: ");
-			insert[1]=sc.nextLine();
-			
-			System.out.println("Nachname: ");
-			insert[2]=sc.nextLine();
-			
-			System.out.println("Straﬂe + NR: ");
-			insert[3]=sc.nextLine();
-			
-			System.out.println("Stadt: ");
-			insert[4]=sc.nextLine();
-			
-			//PreparedStatement ps=con.prepareStatement("Insert into Customer " + "VALUES(?,?,?,?)");
-			String query=" Insert into Customer (id, firstname, lastname, street, city + " values(?,?,?,?,?)";
-			
+			String query="Insert into Customer (ID,firstname, lastname, street,city) VALUES(?,?,?,?,?)";
 			PreparedStatement ps=con.prepareStatement(query);
-					
-			ps.setString(1, insert[0]);
+			
+			ps.setString(1,insert[0]);
 			ps.setString(2, insert[1]);
 			ps.setString(3, insert[2]);
 			ps.setString(4, insert[3]);
 			ps.setString(5, insert[4]);
 			
-			ps.executeUpdate();
+			int i=ps.executeUpdate();
+			if(i==1)
+				System.out.println(i+" Datensatz ge‰ndert");
+			
 			ps.close();
-			//stmt.executeUpdate("INSERT INTO Customer " + "VALUES ('52','Boogie','Man','Weg Weger','Wegberg')");
+			sc.close();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		return insert;
 	}
 	
 	void deleteElement(int id){
 		try{
+			id=Integer.parseInt(sc.nextLine());
 			stmt.executeUpdate("DELETE FROM Customer WHERE ID="+id);
 		}
 		catch(SQLException e) {
-			
+			e.getStackTrace();
 		}
+		catch(NumberFormatException e){
+			e.getStackTrace();
+		}
+		sc.close();
 	}
-	void updateDatabase(){
-		try{
-			stmt.executeUpdate("UPDATE Customer set Firstname='Anita' WHERE ID=1");
+	
+	void updateDatabase(int id,String[]insert){
+		try{			
+				//int id=Integer.parseInt(sc.nextLine());
+				String query=	("UPDATE Customer set id=?,Firstname=?, lastname=?, street=?, city=? WHERE ID=?");
+				PreparedStatement ps=con.prepareStatement(query);
+				ps.setString(1,insert[0]);
+				ps.setString(2, insert[1]);
+				ps.setString(3, insert[2]);
+				ps.setString(4, insert[3]);
+				ps.setString(5, insert[4]);
+				ps.setString(6, insert[0]);
+				ps.executeUpdate();
 		}
 		catch(SQLException e) {
-			
+			e.printStackTrace();
+		}
+		catch(NumberFormatException e){
+			e.getStackTrace();
 		}
 	}
 
+	void searchElement(String id){
+		String query="select * from Customer where Id=?";
+		try {
+			PreparedStatement ps=con.prepareStatement(query);
+			ps.setString(1, id);
+			setRs(ps.executeQuery());
+			while(getRs().next()){
+				
+				System.out.println(getRs().getString(1)+" "+getRs().getString(2)+" "+getRs().getString(3)+" "+getRs().getString(4)+" "+getRs().getString(5));
+			}
+			
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
 	void menue(){
-		System.out.println("Alles Zeigen/Insert/Delete/Update");
+		System.out.println("***********************");
+		System.out.println("****1: Alles Zeigen****");
+		System.out.println("****2: Search**********");
+		System.out.println("****3: Insert**********");
+		System.out.println("****4: Delete**********");
+		System.out.println("****5: Update**********");
+		System.out.println("***********************");
 		
 	}
 }

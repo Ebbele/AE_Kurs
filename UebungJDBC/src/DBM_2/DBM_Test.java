@@ -1,6 +1,7 @@
 package DBM_2;
 
 import java.sql.SQLException;
+import java.util.*;
 
 public class DBM_Test {
 	public static void main(String[] args) {
@@ -10,12 +11,21 @@ public class DBM_Test {
 		dbm.connectDB();
 		dbm.dbQuery();
 		
-		dbm.insertElement();
+		dbm.menue();
+		
+	//	dbm.insertElement(dbm.dateEingeben());
 		
 		//dbm.deleteElement(48);
-		//dbm.updateDatabase();
-		dbm.dbQuery();
-		dbm.showQuery();
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Welche ID Möchten sie Updaten/suchen/löschen");
+		
+		//int i=Integer.parseInt(sc.nextLine());
+		//String s=sc.nextLine();
+		//dbm.updateDatabase(i,dbm.dateEingeben());
+		//dbm.searchElement(s);
+		
+		//dbm.dbQuery();
+		//dbm.showQuery();
 		
 		try {
 			dbm.getRs().close();
