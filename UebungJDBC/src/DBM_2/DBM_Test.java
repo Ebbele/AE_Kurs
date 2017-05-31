@@ -10,10 +10,10 @@ public class DBM_Test {
 		dbm.connectDB();
 		dbm.dbQuery();
 		
-	//	dbm.insertElement();
+		dbm.insertElement();
 		
-		//dbm.deleteElement();
-		dbm.updateDatabase();
+		//dbm.deleteElement(48);
+		//dbm.updateDatabase();
 		dbm.dbQuery();
 		dbm.showQuery();
 		

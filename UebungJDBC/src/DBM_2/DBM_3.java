@@ -2,14 +2,19 @@ package DBM_2;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.*;
+import java.sql.*;
 
 public class DBM_3 {
 	Connection con = null;
 	Statement stmt;
 	ResultSet rs;
+	Scanner sc=new Scanner(System.in);
+	
 
 	public Connection getCon() {
 		return con;
@@ -82,17 +87,51 @@ public class DBM_3 {
 		}
 	}
 
-	void insertElement(){
+	String [] insertElement(){
+		
+		String []insert=new String[5];
+		
 		try {
-			stmt.executeUpdate("INSERT INTO Customer " + "VALUES ('52','Boogie','Man','Weg Weger','Wegberg')");
-		} catch (SQLException e) {
+			System.out.println("ID: ");
+			insert[0]=sc.nextLine();
+			
+			System.out.println("Vorname: ");
+			insert[1]=sc.nextLine();
+			
+			System.out.println("Nachname: ");
+			insert[2]=sc.nextLine();
+			
+			System.out.println("Straße + NR: ");
+			insert[3]=sc.nextLine();
+			
+			System.out.println("Stadt: ");
+			insert[4]=sc.nextLine();
+			
+			//PreparedStatement ps=con.prepareStatement("Insert into Customer " + "VALUES(?,?,?,?)");
+			String query=" Insert into Customer (id, firstname, lastname, street, city + " values(?,?,?,?,?)";
+			
+			PreparedStatement ps=con.prepareStatement(query);
+					
+			ps.setString(1, insert[0]);
+			ps.setString(2, insert[1]);
+			ps.setString(3, insert[2]);
+			ps.setString(4, insert[3]);
+			ps.setString(5, insert[4]);
+			
+			ps.executeUpdate();
+			ps.close();
+			//stmt.executeUpdate("INSERT INTO Customer " + "VALUES ('52','Boogie','Man','Weg Weger','Wegberg')");
+		} 
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		return insert;
 	}
 	
-	void deleteElement(){
+	void deleteElement(int id){
 		try{
-			stmt.executeUpdate("DELETE FROM Customer WHERE ID>=49");
+			stmt.executeUpdate("DELETE FROM Customer WHERE ID="+id);
 		}
 		catch(SQLException e) {
 			
