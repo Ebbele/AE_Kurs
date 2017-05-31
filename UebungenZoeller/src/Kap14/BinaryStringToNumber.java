@@ -11,8 +11,8 @@ public class BinaryStringToNumber {
 	      char c = s.charAt(i);
 	      if ((c != '1') && (c != '0'))
 	      {
-	    	  throw new NoBinaryNumberException(s,i);
-	       // return -i;
+	    	throw new NoBinaryNumberException(s,i);
+	  
 	      }
 	      else
 	      {

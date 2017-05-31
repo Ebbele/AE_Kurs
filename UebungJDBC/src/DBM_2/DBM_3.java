@@ -60,7 +60,8 @@ public class DBM_3 {
 	    }
 	}
 	
-	void dbQuery(){
+	void dbQuery()
+	{
 		  try 
 		  {
 			this.stmt = this.con.createStatement();
@@ -72,7 +73,8 @@ public class DBM_3 {
 		}
 	}
 	void showQuery(){
-		 try {
+		 try 
+		 {
 			while ( rs.next() )
 			        System.out.printf( "%s, %s %s%n", rs.getString(1),
 			        		rs.getString(2),rs.getString(3) );
@@ -90,7 +92,8 @@ public class DBM_3 {
 		}
 	}
 	
-	void deleteElement(){
+	void deleteElement()
+	{
 		try{
 			stmt.executeUpdate("DELETE FROM Customer WHERE ID>=49");
 		}

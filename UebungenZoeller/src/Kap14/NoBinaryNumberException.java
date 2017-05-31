@@ -2,6 +2,11 @@ package Kap14;
 
 public class NoBinaryNumberException extends RuntimeException {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public NoBinaryNumberException(){
 		
 	}
@@ -11,13 +16,11 @@ public class NoBinaryNumberException extends RuntimeException {
 	}
 	
 	public NoBinaryNumberException(String bZahl, int pos){
-		super(bZahl+" Ist keine Binärzahl("+ pos+ ". Stelle)");
+		super(bZahl+" Ist keine Binaerzahl("+ pos+ ". Stelle)");
 			
 		}
 	
-	public void wirf(){
-		
-	}
+	
 
 }
 

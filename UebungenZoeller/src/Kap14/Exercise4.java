@@ -18,13 +18,13 @@ public class Exercise4
 	    irgendEineMethode();
 		  }
 		  catch(NoBinaryNumberException e){
-			  System.out.println("Ficken, 3,20€");
+			  System.out.println("Ficken, 3,20ï¿½");
 		  }
 	    
 	  }
 	  
 	  public static void irgendEineMethode() throws NoBinaryNumberException {
-		  new Exercise4();
+		  new Exercise5();
 	  }	
 }
 
