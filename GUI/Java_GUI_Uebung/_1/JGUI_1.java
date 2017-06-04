@@ -11,7 +11,7 @@ public class JGUI_1 {
 	
 	public JGUI_1(String winTitle, Dimension d){
 		this.frame = newWindow(winTitle, d);
-		this.frame.setVisible(true);
+		//this.frame.setVisible(true);
 	}
 	
 	public JFrame newWindow(String winTitle, Dimension d){
@@ -23,5 +23,10 @@ public class JGUI_1 {
 			}
 		});
 		return frame;
+	}
+	
+	public void showFrame(){
+		frame.pack();
+		frame.setVisible(true);
 	}
 }
