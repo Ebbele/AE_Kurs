@@ -26,11 +26,11 @@ public class JGUI_3_1 {
 	public void setPoly(Polygon poly) {
 		this.poly = poly;
 	}
-
-	public Point getCenters() {
-		return new Point(panel.getWidth() / 2, panel.getHeight() / 2);
+	
+	public Point getCenters(){
+		return new Point(panel.getWidth()/2, panel.getHeight() / 2);
 	}
-
+	
 	public JPanel drawArea() {
 		panel = new JPanel() {
 			private static final long serialVersionUID = 1L;
@@ -52,7 +52,7 @@ public class JGUI_3_1 {
 				}
 			}
 		};
-
+		
 		panel.setPreferredSize(dimension);
 		panel.setSize(dimension);
 		return panel;

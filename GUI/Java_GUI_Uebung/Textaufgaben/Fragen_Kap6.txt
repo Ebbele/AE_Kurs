@@ -1,0 +1,52 @@
+1. Was ist ein Ereignis ?
+   - Ein Ereignis wird durch eine Interaktion vom Benutzer mit der
+     Applikation ausgelöst und kann zur Steuerung des Programmablaufs
+     genutzt werden.
+********************************************************************************
+2. Welchen Nutzen hat die Methode getID() ?
+   - Sie kategorisiert die Ereignisse in ihre Klassen.
+********************************************************************************
+3. Was geschieht bei gleichartigen Ereignissen ?
+   - Gleichartige Ereignisse werden durch Konstanten der Ereignisklasse
+     zugeordnet. 
+********************************************************************************
+4. Wodurch unterscheiden sich Ereignise niedriger und höherer Ebenen ?
+   - Niedrige Ereignisse sind direkt mit einem GUI Element verknüpft, 
+     wohingegen Ereignisse höherer Ebene durch GUI Elemente ausgelöst werden.
+********************************************************************************
+5. Durch welche Aktivitäten kann ein Element des Typs Key ausgelöst werden
+   und von welchem Typ kann die auslösende Klasse sein ?
+   - Ein Ereignis des Typs Key kann durch Interaktionen des Benutzer mit der
+     Tastatur ausgelöst werden und ist von der Klasse KeyEvent abgeleitet.
+********************************************************************************
+6. Was ist eine Ereignisquelle ? Nennen sie ein Beispiel.
+   - Eine Ereignisquelle ist der Auslöser eines Ereignisses, so zum Beispiel
+     ein Button innerhalb der GUI, der auf Klick des Benutzer ein Ereignis 
+     auslöst.
+********************************************************************************
+7. Welche Aufgabe hat ein Listener und was benötigt er um diese zu erfüllen ?
+   - Ein Listener horcht auf die Ereignisse, die ein GUI Element auslöst, an 
+     welches dieser angemeldet ist.
+********************************************************************************
+8. Warum muss der Listener am Ereignisauslöser angemeldet werden ?
+   - Damit der Auslöser die vom Listener erwarteten Ereignisse an diesen 
+     senden kann.
+********************************************************************************
+9. Wodurch unterscheiden sich die Methoden windowClosing() und windowClosed()?
+   - windowClosing() schließt nur das jeweilige Fenster ohne die Applikation
+     zu beenden
+   - windowClosed() schließt das Fenster, gibt alle Resourcen frei und beendet
+     die Applikation
+********************************************************************************
+10. Warum ist es sinnvoll eine Adapterklasse zur Implementierung des
+    Interfaces WindowListener aber auch anderer Interfaces zu verwenden ?
+    - Die Adapterklassen bieten alle zu Implementierenden Methoden des
+      Interfaces mit leerem Rumpf. Dadurch muss nur die konkret zu nutzende
+      Methode überschrieben werden.
+********************************************************************************
+11. Welche Vorteile hat die Verwendung innerer bzw. anonymer Klassen ?
+    - Es muss nicht extra eine eigens für die Nutzung der Adapterklasse
+      zuständige weitere Klasse angelegt werden. So können Adapterklassen an
+      Ort und Stelle verwendet werden ohne den Quellcode unnötig aufblasen
+      zu müssen.
+********************************************************************************

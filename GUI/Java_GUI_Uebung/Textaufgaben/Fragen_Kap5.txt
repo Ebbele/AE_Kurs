@@ -1,0 +1,85 @@
+1. In welchem Package befinden sich viele Java 2D Klassen ?
+    - In dem Package java.awt.geom
+********************************************************************************
+2. Wie können die erweiterten Funktionen der Graphics2D Klassen nutzbar
+   gemacht werden ?
+    - Durch einen Cast eines Objekts vom Typ Graphics zum Objekttyp Graphics2D
+********************************************************************************
+3. Wie werden in der 2D API grafische Primitive ( Linien, geometrische Formen
+   ...) erzeugt ?
+    - Mit der methode draw() die ein Shape Objekt erwartet
+******************************************************************************** 
+4. Welche Aufgabe hat der sogenannte Kontext ?
+   - Der Kontext sammelt Informationen zu den Shape Objekten und zeichnet diese
+     bei Bedarf neu.
+******************************************************************************** 
+5. Welchen Typ erwartet die Methode draw() der Klasse Graphics2D ?
+   - Ein Objekt des Typs Shape
+********************************************************************************
+6. Welche Art von Objekten beschreibt dieser Typ ?
+   - Der Typ Shape bezeichnet einfache Geometrische Formen
+********************************************************************************
+7. Welchen Nutzen hat die Klasse GeneralPath ?
+   - Die Klasse GeneralPath entspricht der Klasse Polygon aus Graphics.
+     Diese übernimmt das Zeichnen von verbundenen Punkten, die nicht an eine
+     Form gebunden sind.
+     Diese Punkte können durch:
+        - Linien
+        - Quadratische Kurven
+        - Bezier Kurven
+     verbunden werden 
+********************************************************************************
+8. Nennen sie 2 Klassen, die die Klasse RectangularShape erweitern.
+   - Rectangle2D
+   - RoundRectangle2D
+********************************************************************************
+9. Können von der Klasse RectangularShape Instanzen erzeugt werden ?
+   Begründen sie Ihre Antwort.
+   - Nein es können keine Instanzen erzeugt werden,
+     da die Klasse RectangularShape Abstrakt ist.
+********************************************************************************
+10. Was bewirkt die Methode moveTo() ?
+    - Mit moveTo() wird der "Stift" zum angegebenen Punkt bewegt.
+********************************************************************************
+11. Was bewirkt die Methode lineTo() ?
+    - Mit lineTo() wird eine Linie vom letzten Punkt zu der in lineTo()
+      angegebenen Koordinate gezeichnet.
+********************************************************************************
+12. Was sagt die Windungsregel aus und welche Auswirkungen hat das auf die
+    Logik des Quelltextes ?
+    - Die Windungsregel gibt an wie gefüllte Objekte gezeichnet werden.
+      durch angabe von WIND_NON_ZERO bzw WIND_EVEN_ODD wird angegeben ob das 
+      zu zeichnende Objekt komplett gefüllt wird oder nicht. Diese Regel
+      beeinflusst wann im Quelltext welches Objekt gezeichnet werden sollte,
+      da ein nicht vollständig gefülltes Objekt dadurch ein anderes
+      Erscheinungsbild bekommt.
+********************************************************************************
+13. Was bewirkt die Methode closePath() ?
+    - Mit closePath() wird der zu zeichnende Pfad abgeschlossen und eine 
+      Verbindungslinie vom letzten Punkt zum ersten Punkt gezeichnet.
+********************************************************************************
+14. Welche Methode kann mit welchen Parametern die Kantenglättung 
+    aktivieren / deaktivieren ?
+    - Mit der Methode setRenderingHints() der Klasse Graphics2D.
+      Parameter 1 ist die gewünschte Option als Konstante hier:
+      RenderingHints.KEY_ANTIALIASING
+      Parameter 2 gibt die Einstellung der Option an hier:
+      RenderingHints.VALUE_ANTIALIASING_XX, dabei wird mit
+      _ON aktiviert und _OFF deaktiviert.
+********************************************************************************
+15. Was lässt sich mit der Konstanten CAP_ROUND erreichen ?
+    - Das Abrunden Linienenden
+********************************************************************************
+16. Was versteht man unter einer Affinen Transformation ?
+    - Als Affine Transformation versteht man eine Transformation eines
+      Objektes als Verschiebung, Rotation, Skalierung oder
+      Scherung unter beibehaltung der Geometrischen Form, sodass Parallele
+      Linien auch Parallel bleiben.
+********************************************************************************
+17. Welchen Nutzen hat die Klasse AffineTransform ?
+    - Durch die Klasse AffineTransform können vor dem zeichnen des Objektes
+      Transformationen an Texten, Formen und Grafiken durch wenige Zeilen
+      Programmcode durchgeführt werden, die sich sonst als sehr komplex 
+      gestalten.
+:close
+
