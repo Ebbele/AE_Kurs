@@ -17,7 +17,7 @@
 5. Durch welche Aktivitäten kann ein Element des Typs Key ausgelöst werden
    und von welchem Typ kann die auslösende Klasse sein ?
    - Ein Ereignis des Typs Key kann durch Interaktionen des Benutzer mit der
-     Tastatur ausgelöst werden und ist von der Klasse KeyEvent abgeleitet.
+     Tastatur ausgelöst werden und wird durch JComponent/Component ausgelöst
 ********************************************************************************
 6. Was ist eine Ereignisquelle ? Nennen sie ein Beispiel.
    - Eine Ereignisquelle ist der Auslöser eines Ereignisses, so zum Beispiel
@@ -33,9 +33,9 @@
      senden kann.
 ********************************************************************************
 9. Wodurch unterscheiden sich die Methoden windowClosing() und windowClosed()?
-   - windowClosing() schließt nur das jeweilige Fenster ohne die Applikation
+   - windowClosed() schließt nur das jeweilige Fenster ohne die Applikation
      zu beenden
-   - windowClosed() schließt das Fenster, gibt alle Resourcen frei und beendet
+   - windowClosing() schließt das Fenster, gibt alle Resourcen frei und beendet
      die Applikation
 ********************************************************************************
 10. Warum ist es sinnvoll eine Adapterklasse zur Implementierung des
