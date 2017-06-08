@@ -8,15 +8,16 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class Oberflaechen extends JFrame{
+public class Oberflaechen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	public static void main(String[] args) {
-		JFrame frame = new JFrame("Fenster auswählen");
-		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		frame.setLayout(new BoxLayout( frame.getContentPane(),BoxLayout.Y_AXIS));
-		
+	public Oberflaechen(String title) {
+		//JFrame = new JFrame("Fenster auswählen");
+		setTitle(title);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+
 		// Palindrom Fenter Button
 		JButton palindrom = new JButton("Palindrom");
 		palindrom.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -26,8 +27,8 @@ public class Oberflaechen extends JFrame{
 				Palindrom.showWindow();
 			}
 		});
-		frame.add(palindrom);
-		
+		add(palindrom);
+
 		JButton quersumme = new JButton("Quersumme");
 		quersumme.setAlignmentX(Component.CENTER_ALIGNMENT);
 		quersumme.addActionListener(new ActionListener() {
@@ -36,8 +37,8 @@ public class Oberflaechen extends JFrame{
 				Quersumme.showWindow();
 			}
 		});
-		frame.add(quersumme);
-		
+		add(quersumme);
+
 		JButton euroUmrechner = new JButton("Euro Umrechner");
 		euroUmrechner.setAlignmentX(Component.CENTER_ALIGNMENT);
 		euroUmrechner.addActionListener(new ActionListener() {
@@ -46,11 +47,16 @@ public class Oberflaechen extends JFrame{
 				EuroUmrechner.showWindow();
 			}
 		});
-		frame.add(euroUmrechner);
-		
-		frame.pack();
-		frame.setVisible(true);
-		frame.setLocationRelativeTo(null);
+		add(euroUmrechner);
+
+		pack();
+		setVisible(true);
+		setLocationRelativeTo(null);
+	}
+
+	@SuppressWarnings("unused")
+	public static void main(String[] args) {
+		Oberflaechen oberflaeche = new Oberflaechen("Auswahl des Mini Programms");
 	}
 
 }
