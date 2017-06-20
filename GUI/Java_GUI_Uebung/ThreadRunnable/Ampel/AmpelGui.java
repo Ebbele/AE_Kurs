@@ -40,21 +40,21 @@ public class AmpelGui extends JFrame implements Runnable {
 				switch (phase) {
 				case RED:
 					g.setColor(Color.RED);
-					g.fillOval(95, 50, 80, 80);
+					g.fillOval(93, 48, 84, 84);
 					break;
 				case YELLOW:
 					g.setColor(Color.YELLOW);
-					g.fillOval(95, 150, 80, 80);
+					g.fillOval(93, 148, 84, 84);
 					break;
 				case GREEN:
 					g.setColor(Color.GREEN);
-					g.fillOval(95, 250, 80, 80);
+					g.fillOval(93, 248, 84, 84);
 					break;
 				case RED_YELLOW:
 					g.setColor(Color.red);
-					g.fillOval(95, 50, 80, 80);
+					g.fillOval(93, 48, 84, 84);
 					g.setColor(Color.YELLOW);
-					g.fillOval(95, 150, 80, 80);
+					g.fillOval(93, 148, 84, 84);
 					break;
 				default:
 					break;
