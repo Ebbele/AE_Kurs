@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class TanzendeSchrift extends JFrame implements Runnable{
 
-	static final String tanz = "Tobias Ebbers";
-
+	static final String tanz = "Tobias Ebbers"; 
+	static final Font font = new Font("Arial", Font.BOLD, 28);
 	private int charData[][] = new int[tanz.length()][4];
 	
 	public TanzendeSchrift() {
@@ -27,21 +27,31 @@ public class TanzendeSchrift extends JFrame implements Runnable{
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				((Graphics2D)g).setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-				
-			
+				g.setFont(font);
+				for(int c = 0, max = tanz.length(); c < max; c++) {
+					g.drawString(String.valueOf(tanz.charAt(c)), charData[c][0], 64);
+				}
 			}
 		};
+				
 		
-		Font f = new Font("Arial", Font.BOLD, 18);
-		FontMetrics metrics = drawing.getFontMetrics(f);
+		FontMetrics metrics = drawing.getFontMetrics(font);
 		
 		Rectangle2D bounds = metrics.getStringBounds(tanz, drawing.getGraphics());
 		
-		drawing.setPreferredSize( new Dimension((int)bounds.getWidth()*2,(int) bounds.getHeight()*6));
+		int x = 0;
+		
+		for(int c = 0, max = tanz.length(); c < max; c++) {
+			charData[c][0] = x;
+			x += metrics.charWidth(tanz.charAt(c));
+		}
+		
+		drawing.setPreferredSize( new Dimension((int)bounds.getWidth()*2,(int) bounds.getHeight()*4));
 		add(drawing);
 		pack();
 		setVisible(true);
 		
+		System.out.println(drawing.getSize());
 		
 	}
 	
