@@ -16,7 +16,7 @@ public class Schoepfer {
 	}
 
 	public void getTrogStand(String what, int c) {
-		System.out.println(what +" "+ c + "\tF\u00fcllstand: " + wassertrog);
+		System.out.println(what + " " + c + "\tF\u00fcllstand: " + wassertrog);
 	}
 
 	public void fill() {
@@ -34,16 +34,16 @@ public class Schoepfer {
 		lock.lock();
 		try {
 			int remove = randomInt();
-			if (wassertrog < remove) {
+			while (wassertrog < remove) {
 				try {
 					System.out.println(remove + " nicht entnehmbar");
 					condFill.await();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			} else {
-				wassertrog -= remove;
 			}
+
+			wassertrog -= remove;
 
 		} finally {
 			lock.unlock();
