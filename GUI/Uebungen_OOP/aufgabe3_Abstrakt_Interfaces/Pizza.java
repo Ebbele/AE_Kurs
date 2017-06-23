@@ -4,3 +4,4 @@ public interface Pizza {
 	public String[] getZutaten();
 	public double getPreis(); 
 }
+
