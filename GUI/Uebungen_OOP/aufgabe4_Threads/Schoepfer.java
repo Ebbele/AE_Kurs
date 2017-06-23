@@ -36,7 +36,7 @@ public class Schoepfer {
 			int remove = randomInt();
 			while (wassertrog < remove) {
 				try {
-					System.out.println(remove + " nicht entnehmbar");
+					System.out.println(remove + " nicht entnehmbar F\u00fcllstand: "+ wassertrog);
 					condFill.await();
 				} catch (InterruptedException e) {
 					e.printStackTrace();

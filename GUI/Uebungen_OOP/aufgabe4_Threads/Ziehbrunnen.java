@@ -7,7 +7,7 @@ public class Ziehbrunnen {
 	public static void main(String[] args) {
 		Schoepfer schoepfer = new Schoepfer();
 		System.out.println("Starte Ziehbrunnen");
-		new Thread() {
+		Thread pumpe = new Thread() {
 			@Override
 			public void run() {
 				while (true) {
@@ -19,9 +19,10 @@ public class Ziehbrunnen {
 					}
 				}
 			}
-		}.start();
+		};
+		pumpe.start();
 
-		new Thread() {
+		Thread verteiler = new Thread() {
 			@Override
 			public void run() {
 				while (true) {
@@ -33,7 +34,8 @@ public class Ziehbrunnen {
 					}
 				}
 			}
-		}.start();
+		};
+		verteiler.start();
 	}
 
 }
