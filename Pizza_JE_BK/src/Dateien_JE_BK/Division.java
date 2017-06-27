@@ -1,7 +1,9 @@
 package Dateien_JE_BK;
 
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
@@ -21,7 +23,11 @@ public class Division {
 	
 	Division() {
 		JFrame frame = new JFrame("Zahlenteiler2000");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(400, 100);
+		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+	    frame.setLocation((int) ((d.getWidth() - frame.getWidth()) / 2), (int) ((d.getHeight() - frame.getHeight()) / 2));
+		
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container container = new Container();
 		container = frame.getContentPane();
 		container.setLayout(new GridLayout(3,2));
@@ -70,7 +76,7 @@ public class Division {
 	
 		
 		
-		frame.setSize(400, 100);
+		
 		frame.setVisible(true);
 		
 	}
