@@ -1,4 +1,4 @@
-package Candy;
+package Candy2;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -6,24 +6,32 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
- class Spielfeld {
 
+class Spielfeld {
+
+	int feldgroesse;
+	int [][] feld = new int [feldgroesse][feldgroesse];
 	
 	
 	
-	public void FeldGenerieren(int felder) {
+
+
+	void feldGenerieren(int feldgroesse) {
 		
-		//Array mit Zahlenwerten für Farben
-		int[][] feld = new int[felder][felder];
+		genFrame(feldgroesse);
+		
+	}
+	
+	
+
+	private int[][] setColors(int anzahl) {
+
+		int[][] feld = new int[anzahl][anzahl];
 		
 		for (int i=0;i<feld.length;i++) {
 			for (int j=0;j<feld.length;j++) {
@@ -36,79 +44,43 @@ import javax.swing.JPanel;
 							|| (feld[i][j]==feld[i-1][j] && feld[i][j]==feld[i-2][j]) );
 				} catch (ArrayIndexOutOfBoundsException e1) {
 					// TODO Auto-generated catch block
-					System.out.println("ungültig");
+					//System.out.println("ungültig");
 				}
 				
-				System.out.println(feld[i][j]);
+				//System.out.println(feld[i][j]);
 				
 				
 			}
 		}
 		
-		// Fenster Erstellen
-		
+		return feld;
+	
+	}
+	
+	private void genFrame(int feldgroesse) {
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		Container container = new Container();
-		container = frame.getContentPane();
+		Container con = new Container();
+		con = frame.getContentPane();
+		con.setLayout(new GridLayout(feldgroesse,feldgroesse));
 		
-		// Grid mit übergebener Größe erstellen
-		
-		container.setLayout(new GridLayout(felder,felder));
-		ActionListener al = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("click");
-				
-				System.out.println(e.getSource());
-				
-				
+		int[][] colors = new int[feldgroesse][feldgroesse];
+		colors = setColors(feldgroesse);
+		this.feld= colors;
+		for (int i=0;i<feldgroesse;i++) {
+			System.out.println("");
+			for (int j=0;j<feldgroesse;j++) {
+				con.add (new createButton(colors[i][j]));
+				System.out.print(colors[i][j]);
 			}
-		};
-		
-		//Buttons erstellen und Farbe anhand des Arrays wählen
-		for (int i=0;i<feld.length;i++) {
-			for (int j=0;j<feld.length;j++) {
-
-				
-				container.add(new createButton(feld[i][j]));
-				frame.pack();
-				
-				/*
-				JButton a1 = new JButton();
-				a1.addActionListener(al);
-				
-				switch (feld[i][j]) {
-				case 1: a1.setBackground(Color.red); break;
-				case 2: a1.setBackground(Color.green); break;
-				case 3: a1.setBackground(Color.yellow); break;
-				case 4: a1.setBackground(Color.blue); break;
-				case 5: a1.setBackground(Color.cyan); break;
-				case 6: a1.setBackground(Color.orange); break;
-				case 7: a1.setBackground(Color.magenta); break;
-				
-				}
-				a1.setPreferredSize(new Dimension (60,60));
-				a1.setOpaque(true);
-				a1.setBorderPainted(false);
-				
-				
-				container.add(a1);
-				*/
-			}
-			
-			
-			
-			
-			
 		}
 		
-		
-		
-		//frame.setSize(felder*60, felder*60);
 		frame.pack();
 		frame.setVisible(true);
 	}
+	
+
 	
 	private class createButton extends JPanel {
 		
@@ -140,12 +112,23 @@ import javax.swing.JPanel;
                 @Override
                 public void actionPerformed(ActionEvent e) {
                    System.out.println(me.getParent());
-                 
+                   button.setBackground(Color.white);
+                  
                 }
             });
             add(button);
         }
 		
 	}
+	public int getFeldgroesse() {
+		return feldgroesse;
+	}
+
+
+
+	public void setFeldgroesse(int feldgroesse) {
+		this.feldgroesse = feldgroesse;
+	}
+
 	
 }
