@@ -7,22 +7,24 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
 
 
 class Spielfeld {
 
 	int feldgroesse;
 	int [][] feld = new int [feldgroesse][feldgroesse];
+	JButton[][] buttonFeld;
 	
 	
-	
-
-
-	void feldGenerieren(int feldgroesse) {
-		
+	Spielfeld(int feldgroesse) {
+		this.feldgroesse = feldgroesse;
+		buttonFeld = new JButton [feldgroesse][feldgroesse];
 		genFrame(feldgroesse);
 		
 	}
@@ -36,15 +38,27 @@ class Spielfeld {
 		for (int i=0;i<feld.length;i++) {
 			for (int j=0;j<feld.length;j++) {
 				
-				
 				try {
-					do {
+					if (i<2&&j<2) {
 						feld[i][j] = (int)((Math.random()) * 7+1);
-					} while ((feld[i][j]==feld[i][j-1] && feld[i][j]==feld[i][j-2])
-							|| (feld[i][j]==feld[i-1][j] && feld[i][j]==feld[i-2][j]) );
+					} else if (i<2) {
+						do {
+							feld[i][j] = (int)((Math.random()) * 7+1);
+						} while (feld[i][j]==feld[i][j-1] && feld[i][j]==feld[i][j-2]);
+					} else if (j<2) {
+						do {
+							feld[i][j] = (int)((Math.random()) * 7+1);
+						} while (feld[i][j]==feld[i-1][j] && feld[i][j]==feld[i-2][j]);
+					} else {
+						do {
+							feld[i][j] = (int)((Math.random()) * 7+1);
+						} while ((feld[i][j]==feld[i][j-1] && feld[i][j]==feld[i][j-2])
+								|| (feld[i][j]==feld[i-1][j] && feld[i][j]==feld[i-2][j]));
+					}
+			
 				} catch (ArrayIndexOutOfBoundsException e1) {
 					// TODO Auto-generated catch block
-					//System.out.println("ungültig");
+					System.out.println("ungültig");
 				}
 				
 				//System.out.println(feld[i][j]);
@@ -71,7 +85,9 @@ class Spielfeld {
 		for (int i=0;i<feldgroesse;i++) {
 			System.out.println("");
 			for (int j=0;j<feldgroesse;j++) {
-				con.add (new createButton(colors[i][j]));
+				//JButton b = new JButton();
+				//buttonFeld[i][j] = b;
+				con.add (new createButton(colors[i][j],i,j));
 				System.out.print(colors[i][j]);
 			}
 		}
@@ -86,13 +102,16 @@ class Spielfeld {
 		
 		createButton me;
 		
-		public createButton(int color) {
+		public createButton(int color, int i, int j) {
             
 			me = this;
 			
 			
 			
+			
             JButton button = new JButton();
+           
+            buttonFeld[i][j] = button;
             switch (color) {
 			case 1: button.setBackground(Color.red); break;
 			case 2: button.setBackground(Color.green); break;
@@ -103,16 +122,37 @@ class Spielfeld {
 			case 7: button.setBackground(Color.magenta); break;
 			
 			}
+            Border blackline, empty;
+            empty = BorderFactory.createEmptyBorder();
+            blackline = BorderFactory.createLineBorder(Color.black);
+            
             button.setPreferredSize(new Dimension (60,60));
 			button.setOpaque(true);
-			button.setBorderPainted(false);
-            
+			button.setBorderPainted(true);
+			button.setBorder(empty);
+			
             button.addActionListener(new ActionListener(){
             
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                   System.out.println(me.getParent());
-                   button.setBackground(Color.white);
+                   
+                	
+                   for (int i=0;i<feldgroesse;i++) {
+            			
+            			for (int j=0;j<feldgroesse;j++) {
+            				if( e.getSource() == buttonFeld[i][j]) {
+            					System.out.println(i + " " + j);
+            					
+            					
+            						buttonFeld[i][j].setBorder(blackline);
+            						
+            					
+            					
+            				}
+            			}
+                	}
+      
+                   //button.setBackground(Color.black);
                   
                 }
             });

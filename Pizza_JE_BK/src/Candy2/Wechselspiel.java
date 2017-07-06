@@ -7,8 +7,8 @@ public class Wechselspiel {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Spielfeld x = new Spielfeld();
-		x.feldGenerieren(9);
+		new Spielfeld(9);
+		
 	}
 
 }
