@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<item>
+    <Waffen>
+        <bezeichnung>waffe 1</bezeichnung>
+        <tp>2</tp>
+    </Waffen>
+    <Waffen>
+        <bezeichnung>waffe 2</bezeichnung>
+        <tp>2</tp>
+    </Waffen>
+</item>
