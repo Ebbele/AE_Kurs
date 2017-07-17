@@ -1,4 +1,0 @@
-Deklariere Variable F und Initialisiere mit 0
-Solange F kleiner, gleich 300
-	gebe aus (5/9) * (F - 32)
-	erhöhe F um 20
