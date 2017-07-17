@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Objects;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
@@ -23,6 +24,7 @@ public class XMLListener implements ActionListener {
 	private final JFrame frame;
 	private TableModel tableModel;
 	private final JMenuBar menu;
+	private JButton btnInsertEntry;
 	
 	// Übergabe des XML-Filenamens als auch des in XML_Editor.java erzeugten JFrames und die MenuBar
 	XMLListener( File file, JFrame frame, JMenuBar menueLeiste ) {  
@@ -88,6 +90,14 @@ public class XMLListener implements ActionListener {
 			
 			// entferne das Menu
 			frame.remove( menu );
+			
+			btnInsertEntry = new JButton( "Eintrag hinzufuegen" ) {
+				public void actionPerformed( ActionEvent evt3 ) {
+					// sobald Objektgraph steht, kann hier was reinimplementiert werden
+				}
+			};
+			
+			frame.add( btnInsertEntry, BorderLayout.SOUTH ); 
 			
 			// validiere, da eine Neuausführung des Layout erforderlich ist( durch hinzufügen neuer Gui-Elemente) nach setVisible(true)
 			frame.validate( );	
